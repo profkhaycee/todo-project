@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://127.0.0.1:8000/api",
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 export const getTodos = (filter = "") =>
@@ -20,3 +20,5 @@ export const clearCompleted = () => API.delete(`/todos/completed`);
 export const reorderTodos = (todos) => API.post("/todos/reorder", { todos });
 
 export const updateTodo = (id, data) => API.put(`/todos/${id}`, data);
+
+
